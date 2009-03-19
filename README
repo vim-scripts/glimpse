@@ -1,0 +1,39 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=2588
+
+Glimpse is a powerful indexing and query system, free for personal use.
+	http://www.webglimpse.net
+
+VimGlimpse is a basic Glimpse interface within Vim, based on a Vim Tip from
+Jean-Rene David. 
+	http://vim.wikia.com/wiki/Use_glimpse_from_within_Vim
+
+VimGlimpse retains normal Vim :grep functionality, and provides
+additional Glimpse features outside of what :grepprg can allow.  By
+default, VimGlimpse only searches within your current working directory,
+making it ideal for near instantaneous searches across a project.
+
+Examples:
+
+    :Glimpse porksausage
+
+		Find porksausage across all files in the current working directory.
+
+    :Glimpse needle haystack.h$
+
+		Finds all needles in all haystack.h's files.
+
+	:let g:glimpseFlags = "-iny -2"
+	:Glimpse Anestesiology html 
+
+		Outputs all occurrences of  Anestesiology  with  two  errors  in
+		files with html somewhere in their full name.
+
+	:Glimpse windsurfing;Arizona mail;1993
+
+		Finds  all lines containing windsurfing and Arizona in all files
+		having `mail' and '1993' somewhere in their full name.
+
+Results are placed into the |quickfix| window.  Additionally, the 'q' key is
+bound to the window so you can close it again quickly. 
+
+
