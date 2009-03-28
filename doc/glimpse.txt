@@ -1,4 +1,4 @@
-*glimpse.txt* Last change: $Id: specky.txt 49 2008-08-15 13:32:40Z mahlon $
+*glimpse.txt* Last change: $Id: glimpse.txt 61 2009-03-19 16:47:44Z mahlon $
 
                 VIM REFERENCE MANUAL    by Mahlon E. Smith
 

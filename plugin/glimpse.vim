@@ -6,7 +6,7 @@
 " http://vim.wikia.com/wiki/Use_glimpse_from_within_Vim
 "
 " Mahlon E. Smith <mahlon@martini.nu>
-" $Id: specky.vim 49 2008-08-15 13:32:40Z mahlon $
+" $Id: glimpse.vim 61 2009-03-19 16:47:44Z mahlon $
 "
 " Here's a tcsh alias that's nice too!
 " alias g 'glimpse -winO -F `pwd` \!:1 | sed -e "s|^`pwd`/||"'
@@ -16,7 +16,7 @@
 if exists( 'g:glimpse_loaded' )
     finish
 endif
-let g:glimpse_loaded = '$Rev: 92 $'
+let g:glimpse_loaded = '$Rev: 61 $'
 
 " }}}
 " Hook up the functions to the user supplied key bindings. {{{
@@ -88,7 +88,12 @@ function! <SID>Glimpse( ... )
 
 	" execute the search.
 	"
-	let l:cmd = "glimpse " . g:glimpseFlags . " -F '" . l:cwd . ";" . l:file_pattern . "' '" . l:search_pattern . "'"
+	let l:cmd = "glimpse " . g:glimpseFlags . " -F '" . l:cwd
+	if ( l:file_pattern != '' )
+		let l:cmd = l:cmd . ";" . l:file_pattern
+	endif
+	let l:cmd = l:cmd . "' '" . l:search_pattern . "'"
+
 	let l:result_list = split( system( l:cmd ), "\n" )
 
 	" no results, escape now
