@@ -1,4 +1,4 @@
-*glimpse.txt* Last change: $Id: glimpse.txt 61 2009-03-19 16:47:44Z mahlon $
+*glimpse.txt* Last change: $Id: glimpse.txt,v fd505fd00e63 2009/03/19 16:47:44 mahlon $
 
                 VIM REFERENCE MANUAL    by Mahlon E. Smith
 

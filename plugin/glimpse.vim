@@ -6,9 +6,12 @@
 " http://vim.wikia.com/wiki/Use_glimpse_from_within_Vim
 "
 " Mahlon E. Smith <mahlon@martini.nu>
-" $Id: glimpse.vim 61 2009-03-19 16:47:44Z mahlon $
+" $Id: glimpse.vim,v a8f9271a7cab 2009/07/30 16:35:10 mahlon $
 "
-" Here's a tcsh alias that's nice too!
+" Here's a bash function that's nice too!
+" function g() { command glimpse -winO -F `pwd` $1 | sed 's|^`pwd`/||'; }
+"
+" And a tcsh alias, while we're at it!
 " alias g 'glimpse -winO -F `pwd` \!:1 | sed -e "s|^`pwd`/||"'
 "
 
@@ -16,7 +19,7 @@
 if exists( 'g:glimpse_loaded' )
     finish
 endif
-let g:glimpse_loaded = '$Rev: 61 $'
+let g:glimpse_loaded = '$Rev: a8f9271a7cab $'
 
 " }}}
 " Hook up the functions to the user supplied key bindings. {{{
@@ -138,8 +141,14 @@ endfunction
 function! <SID>GlimpseIndex()
 	let l:cmd = 'glimpseindex ' . g:glimpseindexFlags . ' -f .'
 	let l:cwd = getcwd()
-	silent! lgetexpr( system(l:cmd) )
+	let $LC_ALL = 'C'
+	let l:index_output = system(l:cmd)
+	let l:index_exit = v:shell_error
 	call s:err( "Updated indexes for '" . l:cwd . "'" )
+	if l:index_exit != 0
+		call s:err( "Uh oh, " . l:cmd . " exited with " . l:index_exit. "!  Output follows:" )
+		call s:err( l:index_output )
+	endif
 endfunction
 
 
